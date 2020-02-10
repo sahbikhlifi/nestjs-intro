@@ -1,7 +1,7 @@
-import { Controller, Post, Body, Get, Param, Patch } from "@nestjs/common";
+import { Controller, Post, Body, Get, Param } from "@nestjs/common";
 import {  ProductsService } from './products.service'
-import { Product } from "./product.model";
-import { get } from "http";
+import { Product } from "./product.interface";
+
 
 @Controller('products')
 export class ProductsController {
