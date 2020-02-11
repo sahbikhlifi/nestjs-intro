@@ -9,8 +9,8 @@ constructor(private readonly productsService : ProductsService){}
 
     @Post()
     
-    async addProduct(  @Body() obj: any ): Promise<Product> {
-           const generatedId =  this.productsService.insertProduct(obj);
+    async addProduct(  @Body() obj: Product ): Promise<Product> {
+        
            return await this.productsService.insertProduct(obj);
         }
 

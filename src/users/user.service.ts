@@ -9,7 +9,7 @@ export class UsersService {
 constructor(@InjectModel('User') private readonly userModel: Model<User>) { }
 
 async insertUser(obj:User){
-    const result = await this.userModel.creaate(obj);
+    const result = await this.userModel.create(obj);
     return result;
 }
 
@@ -23,6 +23,12 @@ async getOneUser(userId:string){
     return result;
 
 }
+
+async getUserByUsername(username:string){
+    const result = await this.userModel.findOne({username:username});
+    return result;
+
+} 
 async updateUser(userId:string, data) {
     const result = await this.userModel.findByIdAndUpdate({_id:userId});
     return result;

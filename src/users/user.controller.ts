@@ -5,24 +5,24 @@ import { User } from "./user.interfeces";
 
 @Controller('users')
 export class UsersController {
-constructor(private readonly productsService : UsersService){}
+constructor(private readonly UsersService : UsersService){}
 
     @Post()
     
-    async addProduct(  @Body() obj: any ): Promise<User> {
-           const generatedId =  this.productsService.insertUser(obj);
-           return await this.productsService.insertUser(obj);
+    async addProduct(  @Body() obj: User ): Promise<User> {
+           
+           return await this.UsersService.insertUser(obj);
         }
 
         @Get()
-        async getAllProducts(){
-            const products = await this.productsService.getUsers();
+        async getAllUser(){
+            const products = await this.UsersService.getUsers();
             return products
         }
 
         @Get(':id')
-        async getProduct(@Param('id') prodId:string){
-        return await this.productsService.getOneUser(prodId)
+        async getUser(@Param('id') userId:string){
+        return await this.UsersService.getOneUser(userId)
         }
 
         @Post('update/:id')
@@ -32,13 +32,13 @@ constructor(private readonly productsService : UsersService){}
             @Body('mail') userMail:string,
             @Body('password') userPassword:string,){
             const data={username: userName  , mail: userMail , passwords : userPassword}
-            await this.productsService.updateUser(userId,data)
+            await this.UsersService.updateUser(userId,data)
             return null;
             }
 
         @Post(':id')
-        async removeProduct(@Param('id') userId:string ){
-            return await this.productsService.deleteUser(userId)
+        async removeUser(@Param('id') userId:string ){
+            return await this.UsersService.deleteUser(userId)
         }
 }
 
