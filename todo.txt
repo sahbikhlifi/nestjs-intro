@@ -1,0 +1,4 @@
+products: crud
+users :crud
+login (auth) user
+Interceptors
